@@ -1,16 +1,16 @@
 class Solution {
 public:
-    double myPow(double x, int n) {
-        if(n==0) return 1;
-        if(n<0) {
-            n = abs(n);
-            x = 1/x;
-        }
-        if(n%2==0){
-            return myPow(x*x, n/2);
-        }
-        else{
-            return x*myPow(x, n-1);
+    double helper(double x, long long n) {
+        if (n == 0)
+            return 1;
+        if (n < 0)
+            return 1.0 / helper(x, -n);
+
+        if (n % 2 == 1) {
+            return x * helper(x * x, (n - 1) / 2);
+        } else {
+            return helper(x * x, n / 2);
         }
     }
+    double myPow(double x, int n) { return helper(x, (long long)n); }
 };
