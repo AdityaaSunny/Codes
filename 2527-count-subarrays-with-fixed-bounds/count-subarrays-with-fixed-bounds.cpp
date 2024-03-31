@@ -6,12 +6,12 @@ public:
         int s=nums.size();
         for(int r=0, l=0; r<s; r++){
             int x=nums[r];
-            if (x<minK ||x>maxK){// x exceeds the bound
-                l=r+1; // move l to r+1
+            if (x<minK ||x>maxK){
+                l=r+1;
                 continue;
             }
-            if (x==maxK) maxi=r; // position for maxK
-            if (x==minK) mini=r; // position for minK
+            if (x==maxK) maxi=r;
+            if (x==minK) mini=r;
             ans+=max((min(maxi, mini)-l+1),0);
         }
         return ans;
