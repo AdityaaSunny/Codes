@@ -1,24 +1,26 @@
 class Solution {
 public:
-    string removeKdigits(string num, int k) {
-        vector<char>stk;
-        string ans;
-        for(char c :num){
-            while(k>0 && !stk.empty() && stk.back()>c){
-                stk.pop_back();
+    string removeKdigits(std::string num, int k) {
+        stack<char> stack;
+        for (char digit : num) {
+            while (!stack.empty() && k > 0 && stack.top() > digit) {
+                stack.pop();
                 k--;
             }
-            stk.push_back(c);
+            stack.push(digit);
         }
-        while(k>0){
-            stk.pop_back();
+        while (k > 0 && !stack.empty()) {
+            stack.pop();
             k--;
         }
-        for(char c : stk){
-            if(ans.empty() && c=='0') continue;
-            ans.push_back(c);
-
+        string result;
+        while (!stack.empty()) {
+            result += stack.top();
+            stack.pop();
         }
-        return ans.empty()?"0":ans;
+        reverse(result.begin(), result.end());
+        size_t pos = result.find_first_not_of('0');
+        result = (pos == std::string::npos) ? "0" : result.substr(pos);
+        return result;
     }
 };
