@@ -1,20 +1,16 @@
 class Solution {
 public:
-     void computeTribonacci(int n, map<int, int>& memo) {
-        if (n == 0) {
-            memo[n] = 0;
-        } else if (n == 1 || n == 2) {
-            memo[n] = 1;
-        } else {
-            memo[n] = memo[n-3] + memo[n-2] + memo[n-1];
-        }
-    }
-    
     int tribonacci(int n) {
-        map<int, int> memo;
-        for (int i = 0; i <= n; i++) {
-            computeTribonacci(i, memo);
+        if(n < 2)
+            return n;
+        int a1 = 0, a2 = 1, a3 = 1, t;
+        while(n > 2) {
+            t = a1 + a2 + a3;
+            a1 = a2;
+            a2 = a3;
+            a3 = t;
+            n--;
         }
-        return memo[n];
+        return a3;
     }
 };
