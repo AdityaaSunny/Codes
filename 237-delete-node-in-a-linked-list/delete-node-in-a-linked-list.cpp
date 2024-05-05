@@ -9,12 +9,13 @@
 class Solution {
 public:
     void deleteNode(ListNode* node) {
-        while(node && node->next){
-            node->val=node->next->val;
-            if(!node->next->next){
-                node->next=NULL;
-            }
+        node->val=(node->next)->val;
+        while((node->next)->next!=NULL){
+            (node->next)->val=((node->next)->next)->val;
+            cout<<node->val<<"->";
             node=node->next;
         }
+        node->next=NULL;
+        
     }
 };
