@@ -1,17 +1,19 @@
 class Solution {
 public:
     bool judgeSquareSum(int c) {
-        unordered_map<int, int> ump;
-
-        for(int i=0; i<=sqrt(c); i++){
-            ump[i*i]++;
-            int req = c - i*i;
-
-            if(ump[req]){
-                return true;
-            }
+        long long int i=1,j=sqrt(c);
+        if(j*j==c)
+        return true;
+        while(i<=j)
+        {
+           long long sum = (i*i)+(j*j);
+           if(sum==c)
+           return true;
+           else if(sum<c)
+           i++;
+           else
+           j--;
         }
-
         return false;
     }
 };
