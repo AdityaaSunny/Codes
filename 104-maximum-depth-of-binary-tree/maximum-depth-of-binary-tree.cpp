@@ -11,14 +11,9 @@
  */
 class Solution {
 public:
-    
     int maxDepth(TreeNode* root) {
         if(root==NULL)  return 0;
-        int x= maxDepth(root->right);
-        int y= maxDepth(root->left);
-
-        int maxi=(max(x,y)+1);
-        return maxi;
+        return max(maxDepth(root->right),maxDepth(root->left))+1;
 
     }
 };
