@@ -2,14 +2,14 @@ class Solution {
 public:
     void nextPermutation(vector<int>& nums) {
         vector<int> ans;
-        vector<int> anss;
-        for(auto i:nums){
+        vector<int> ans2;
+        for(auto& i : nums){
             ans.push_back(i);
-            anss.push_back(i);
+            ans2.push_back(i);
         }
         reverse(ans.begin(),ans.end());
-        sort(anss.begin(),anss.end());
-        if(ans==anss){
+        sort(ans2.begin(),ans2.end());
+        if(ans==ans2){
             sort(nums.begin(),nums.end());
         }
         else{
@@ -17,7 +17,6 @@ public:
                 break;
             }
         }
-        // reverse(nums.begin() + index + 1, nums.end());
     }
    
 };
