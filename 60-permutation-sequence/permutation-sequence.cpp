@@ -9,11 +9,8 @@ public:
         if(k==1){
             return s;
         }
-        while(next_permutation(s.begin(),s.end())){
+        while(next_permutation(s.begin(),s.end()) && count<k-1){
             count++;
-            if(count==k){
-                break;
-            }
         }
         return s;
     }
