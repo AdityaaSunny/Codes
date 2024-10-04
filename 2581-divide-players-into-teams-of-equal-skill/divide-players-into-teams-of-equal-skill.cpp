@@ -10,7 +10,7 @@ public:
                 if(skill[i]+skill[n-i-1]!=sum){
                 return -1;
                 }
-                res+=(long long)skill[i]*skill[n-i-1];
+                res+=skill[i]*skill[n-i-1];
         }
         return res;
     }
